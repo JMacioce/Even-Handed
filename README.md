@@ -1,2 +1,2 @@
-# MiniSiteTemplate
-Mini Site Template for my JS Projects
+# Even-Handed: A Coding Project
+Life Should Be BOLD And EVEN! 
