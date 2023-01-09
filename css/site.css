@@ -7,6 +7,12 @@
     --fa2-color: #6096AA;
 }
 
+.logoFont {
+    font-family: uniwars, sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
 body {
     color: var(--dark-color);
 }
