@@ -58,17 +58,87 @@
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                        //Call hello world
-                        function HelloWorld() {
-                            alert("hellow world");
-                        }
+                            //get values from app page
+                            //start OR controller function
+                            function getValues() {
+                                //get values from app page
+                                let startValue = document.getElementById("startValue").value;
+                                let endValue = document.getElementById("endValue").value;
+
+                                //Validating our inputs
+                                //parsing to Integers
+                                startValue = parseInt(startValue);
+                                endValue = parseInt(endValue);
+
+                                //if inputs are numbers
+                                if(Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                                    //call generateNumbers function
+                                    let numbers = generateNumbers(startValue, endValue);
+                                    //call displayNumbers function
+                                    displayNumbers(numbers);
+                                }
+                                //if inputs are not numbers
+                                else {
+                                    alert("You must enter integers for Even-Handed to work!");
+                                }    
+                            }
+
+                            //generate numbers from startValue to endValue
+                            //logic function(s)
+                            function generateNumbers(start, end) {
+                                //create empty array
+                                let numbers = [];
+                                
+                                //generating numbers with for loop using start and end values
+                                for(let index = start; index <= end; index++) {
+                                    //adding current number to array
+                                    numbers.push(index);
+                                }
+                                return numbers;
+                            }
+
+                            //display numbers and make even numbers bold
+                            //display OR view functions
+                            function displayNumbers(numbers) {
+
+                                let templateRows = "";
+
+                                for (let index = 0; index < numbers.length; index++) {
+                                    let className = "even";
+                                    let number = numbers[index];
+
+                                    if(number % 2 == 0) {
+                                        className = "even";
+                                    }
+                                    else {
+                                        className = "odd";
+                                    }
+                                    //Prism.js has trouble displaying template literals, see source code
+                                    templateRows += `<tr><td class="${className}" >${number}</td></tr>`;
+                                }
+                                document.getElementById("results").innerHTML = templateRows;
+                            }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function</p>
-                    <h5>Hello World!</h5>
-                    <p>Hello world is a function that displays an alert with a message of "Hello World"</p>
+                    <p>The Code is structured in <strong>three</strong> functions</p>
+                    <h5>getValues</h5>
+                    <p>The <strong>getValues</strong> function gets user input from the app page. The function utilizes the <strong>getElementById</strong> to pull values
+                    from the page. It then passes those values to the <strong>generateNumbers</strong> function.
+                    The function <strong>generateNumbers</strong> then returns an array of values and passes that array to the <strong>displayNumbers</strong>
+                    function.</p>
+                    <h5>generateNumbers</h5>
+                    <p>The <strong>generateNumbers</strong> function takes in two parameters (<strong>startValue</strong> and <strong>endValue</strong>).
+                    We create a variable <strong>numbers</strong> that holds an array. We then use a for loop to generate all the numbers between
+                    <strong>startValue</strong> and <strong>endValue</strong>.</p>
+                    <h5>displayNumbers</h5>
+                    <p>The function <strong>displayNumbers</strong> takes in the parameter <strong>numbers</strong> (the variable is an array that holds the values
+                    between <strong>startValue</strong> and <strong>endValue</strong>). We create the variable <strong>className</strong> that holds the name of the CSS class
+                    we will use to bold the numbers. The variable <strong>templateRows</strong> is then created to hold the HTML we want to write to the app page.</p>
+                    <p>A for loop checks all the numbers to check if they are odd or even. The modulus operator (%) is used to check if a number is divisible by two, making it
+                    even, or else it is deemed odd. The correct <strong>className</strong> is then injected into the html row for display. Each iteration of the loop adds to the
+                    <strong>templateRows</strong> variable. When the loop is done, the resulting HTML rows are then written to our app page for display!</p>
                 </div>
             </div>
         </div>
